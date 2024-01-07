@@ -1,24 +1,31 @@
 import java.util.Scanner;
 
-public class RangeNumbers {
+public class NumberRange {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the first number: ");
+        System.out.println("Enter the first number:");
         int firstNumber = scanner.nextInt();
 
-        System.out.print("Enter the second number: ");
+        System.out.println("Enter the second number:");
         int secondNumber = scanner.nextInt();
 
-        // Ensure the first number is smaller than the second number
-        if (firstNumber >= secondNumber) {
-            System.out.println("Please enter valid numbers with the first number smaller than the second number.");
-            return;
-        }
+        scanner.close();
 
-        System.out.println("Numbers between " + firstNumber + " and " + secondNumber + ":");
-        for (int i = firstNumber + 1; i < secondNumber; i++) {
-            System.out.println(i);
+        if (firstNumber < secondNumber) {
+            System.out.println("Odd numbers between " + firstNumber + " and " + secondNumber + ":");
+            for (int i = firstNumber + 1; i < secondNumber; i++) {
+                if (i % 2 != 0) {
+                    System.out.print(i + " ");
+                }
+            }
+        } else {
+            System.out.println("Odd numbers between " + secondNumber + " and " + firstNumber + ":");
+            for (int i = secondNumber + 1; i < firstNumber; i++) {
+                if (i % 2 != 0) {
+                    System.out.print(i + " ");
+                }
+            }
         }
     }
 }
