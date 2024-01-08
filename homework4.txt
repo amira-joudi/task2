@@ -1,0 +1,253 @@
+#Tasks answers
+a. configure git with name, email and favorite editor.
+
+git config --global user.name "Name"
+git config --global user.email "email"
+git config --global core.editor "eclipse"
+git config --global --list
+
+b.clone repository to machine using git's clone command.
+
+git clone https://github.com/amira-joudi/task2.git
+cd task2/
+ls -la .git
+
+c. Edit your repository's README.md to describe your repository. the README.md is for people who are looking for a repository, not yourself. Be creative and try something beyond (this is the repository for <your_name_and last_name>. 
+Question: Using markdown, how would you put a clickable link to your README.md to the web page of the department of software engineering of Isik University.
+
+# Welcome to Our Repository
+
+This is the repository for [Amira and Joudi](https://github.com/amira-joudi/task2.git), showcasing something amazing. Feel free to explore and contribute!
+
+## About the Department
+
+For more information about the Department of Software Engineering at Işık University, visit [their website](https://www.isikun.edu.tr/akademik/muhendislik-fakultesi/bolumler-ve-programlar/bilgisayar-muhendisligi/programlar/lisans-programi/yazilim-muhendisligi).
+
+d. decide which files you do not want git to keep track of or allow to be committed to source control, and set up your .gitignore appropriatly. You may want to use the templates others have contributed as a guide (see https://github.com/github/gitignore for a bunch of suggestions across many technologies. Java Technologies would be fine for this assignment). Commit thes rules in the project. Ensure the text "setting up gitignore" appears in your commit message.
+Question: What rules are in your .gitignore?
+
+#.gitignore file
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# IntelliJ IDEA
+.idea/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+target/
+*.iml
+
+# Gradle
+build/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+#commit 
+git add .gitignore
+git commit -m "Setting up .gitignore"
+
+e.create a branch called feature-1. Switch to that branch and move into the hmk1 directory. All your work will be done in this directory and this branch.
+
+git checkout -b feature-1
+git branch
+pwd
+
+f. Using an IDE of your choce, write a java program that takes as input two numbers(read from the console) and prints out all the numbers that sit between these two numbers, not including the two inputs in the range.
+
+#CODE JAVA
+import java.util.Scanner;
+
+public class NumberRangePrinter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        int firstNumber = scanner.nextInt();
+
+        System.out.print("Enter the second number: ");
+        int secondNumber = scanner.nextInt();
+
+        // Ensure the first number is smaller than the second number
+        if (firstNumber >= secondNumber) {
+            System.out.println("Please enter valid numbers with the first number smaller than the second number.");
+            return;
+        }
+
+        System.out.println("Numbers between " + firstNumber + " and " + secondNumber + ":");
+        for (int i = firstNumber + 1; i < secondNumber; i++) {
+            System.out.println(i);
+        }
+    }
+}
+
+#COMMIT
+git add RangeNumber.java
+git commit -m "Satisfying requirement one
+git log
+git push origin feature-1
+
+g.Merge feature-1 into main
+
+git checkout main
+git pull origin main
+git merge feature-1
+git commit -m "Merge feature-1 into main"
+git push origin main
+
+h. Create a new branch called feature-2 off main
+
+git checkout -b feature-2
+git push origin feature-2
+
+i. Create a new branch called feature-3 off main
+
+git checkout -b feature-3
+git push origin feature-3
+
+j. switch to the feature-2 branch. change the method that prints the numbers in the range so it now prints only the odd numbers in the range. 
+import java.util.Scanner;
+
+#Switch
+git checkout feature-2
+git pull origin feature-2
+
+#code
+
+public class NumberRange {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first number:");
+        int firstNumber = scanner.nextInt();
+
+        System.out.println("Enter the second number:");
+        int secondNumber = scanner.nextInt();
+
+        scanner.close();
+
+        if (firstNumber < secondNumber) {
+            System.out.println("Odd numbers between " + firstNumber + " and " + secondNumber + ":");
+            for (int i = firstNumber + 1; i < secondNumber; i++) {
+                if (i % 2 != 0) {
+                    System.out.print(i + " ");
+                }
+            }
+        } else {
+            System.out.println("Odd numbers between " + secondNumber + " and " + firstNumber + ":");
+            for (int i = secondNumber + 1; i < firstNumber; i++) {
+                if (i % 2 != 0) {
+                    System.out.print(i + " ");
+                }
+            }
+        }
+    }
+}
+
+#commit
+git checkout feature-2
+git commit -m "Satisfying requirement change two"
+git push origin feature-2
+k. switch to the feature-3 branch. change the method that prints the numbers in the range so it now prints only the even numbers in the range. Do not add a method.
+
+#switch
+
+git checkout feature-3
+git pull origin feature-3
+
+
+#code
+
+import java.util.Scanner;
+
+public class NumberRange {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first number:");
+        int firstNumber = scanner.nextInt();
+
+        System.out.println("Enter the second number:");
+        int secondNumber = scanner.nextInt();
+
+        scanner.close();
+
+        if (firstNumber < secondNumber) {
+            for (int i = firstNumber + 1; i < secondNumber; i++) {
+                if (i % 2 == 0) {
+                    System.out.print(i + " ");
+                }
+            }
+        } else {
+            for (int i = secondNumber + 1; i < firstNumber; i++) {
+                if (i % 2 == 0) {
+                    System.out.print(i + " ");
+                }
+            }
+        }
+    }
+}
+
+#commit
+git add RangeNumbers.java
+git commit -m "Satisfying requirement change three"
+git push origin feature-3
+
+l. merge feature-2 into main
+git merge feature-2
+git add .
+git commit -m "Merge feature-2 into main"
+git push origin main
+
+m.l. merge feature-3 into main
+git merge feature-3
+git commit -m "Merge feature-3 into main"
+git push origin main
+
+git diff main..feature-1 && git diff main..feature-2 && git diff main..feature-3
+
+n. push all four branches(master, feature-1, feature-2, feature-3) to origin. You can verify the results by going to the web page of your repository on Github, and lookin at the hwk4 directory. You should be able to see all the branches and the commit log.
+
+git push origin main
+git push origin feature-1
+git push origin feature-2
+git push origin feature-3
+
+o. Ensure the answers to all the questions are in homework4.txt and push it to origin. homework4.txt must be in your hmk4 directory and must be found on the main branch.
+git checkout main
+mv hmk4/homework4.txt ./
+git add homework4.txt
+git commit -m "Move homework4.txt to main branch"
+git push origin main
+git add hmk4/homework.txt
+git commit -m "Add homework.txt to main branch"
+git push origin main
+
+p. Write down the link to your Github repository you created and used throught this assignment
+
+https://github.com/amira-joudi/task2.git
+
+
+
+
+
+
